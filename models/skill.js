@@ -8,7 +8,13 @@ const skills = [
 
     
   ];
-  
+
+function add(skillData) {
+  const newId = skills.length > 0 ? Math.max(...skills.map(skill => skill.id)) + 1 : 1;
+  const newSkill = { id: newId, ...skillData };
+  skills.push(newSkill);
+}
+
 
   function findById(id) {
     return skills.find(skill => skill.id === parseInt(id));
@@ -21,6 +27,7 @@ const skills = [
   module.exports = {
     getAll,
     findById,
+    add
   };
   
 

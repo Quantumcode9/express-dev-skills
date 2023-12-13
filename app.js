@@ -4,9 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const skillModel = require('./models/skill');
 var indexRouter = require('./routes/index');
 var skillsRouter = require('./routes/skills');
-
 
 var app = express();
 
@@ -33,6 +33,10 @@ app.get('/skills/:id', (req, res) => {
   const skill = skillModel.findById(req.params.id);
   res.render('skills/show', { skill });
 });
+
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
