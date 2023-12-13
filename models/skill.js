@@ -13,15 +13,15 @@ const skills = [
   function findById(id) {
     return skills.find(skill => skill.id === parseInt(id));
   }
+
+  function getAll() {
+    return skills;
+  }
   
   module.exports = {
     getAll,
     findById,
   };
-
-    function getAll() {
-        return skills;
-    }  
   
 
 
