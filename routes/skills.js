@@ -12,6 +12,19 @@ router.get('/', (req, res) => {
 
 module.exports = router;
 
+router.get('/new', (req, res) => {
+    res.render('skills/new');
+  });
+
+  router.post('/', (req, res) => {
+
+  });
+
+
+router.delete('/:id', (req, res) => {
+  // Logic to delete the skill from the "database"
+  // Redirect to the index view
+});
 
 router.get('/', skillsController.index);
 router.get('/:id', skillsController.show);

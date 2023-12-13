@@ -24,6 +24,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/skills', skillsRouter);
 
+app.get('/skills', (req, res) => {
+  const skills = skillModel.getAll();
+  res.render('skills/index', { skills });
+});
+
+app.get('/skills/:id', (req, res) => {
+  const skill = skillModel.findById(req.params.id);
+  res.render('skills/show', { skill });
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
