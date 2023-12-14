@@ -1,31 +1,32 @@
 const express = require('express');
 const router = express.Router();
 const skillsController = require('../controllers/skills');
-const skillModel = require('../models/skill');
 
+// Route to display all skills 
 router.get('/', skillsController.index);
 
+// Route to display the form for adding a new skill
 router.get('/new', (req, res) => {
     res.render('skills/new');
 });
 
+
+router.get('/show', (req, res) => {
+    res.render('/show');
+});
+
+
+// Route to handle the creation of a new skill 
 router.post('/', skillsController.create);
 
-router.delete('/:id', skillsController.delete);
-
+// display a specific skill (
 router.get('/:id', skillsController.show);
 
-router.get('/', (req, res) => {
-  const skills = skillModel.getAll();
-  res.render('skills/index', { skills });
-});
+// the deletion of a skill 
+router.delete('/:id', skillsController.delete);
+
+router.put('/:id', skillsController.update);
+
+
 module.exports = router;
-router.get('/new', (req, res) => {
-    res.render('skills/new');
-  });
-  router.post('/', (req, res) => {
-  });
-router.delete('/:id', (req, res) => {
-  // Logic to delete the skill from the "database"
-  // Redirect to the index view
-});
+

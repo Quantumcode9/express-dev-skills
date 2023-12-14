@@ -15,6 +15,21 @@ function add(skillData) {
   skills.push(newSkill);
 }
 
+function remove(id) {
+  id = parseInt(id);
+  const index = skills.findIndex(skill => skill.id === id);
+  if (index > -1) {
+      skills.splice(index, 1);
+  }
+}
+
+function update(id, updatedSkillData) {
+  const index = skills.findIndex(skill => skill.id === parseInt(id));
+  if (index !== -1) {
+      skills[index] = { ...skills[index], ...updatedSkillData };
+  }
+}
+
 
   function findById(id) {
     return skills.find(skill => skill.id === parseInt(id));
@@ -27,7 +42,9 @@ function add(skillData) {
   module.exports = {
     getAll,
     findById,
-    add
+    add,
+  remove,
+  update
   };
   
 

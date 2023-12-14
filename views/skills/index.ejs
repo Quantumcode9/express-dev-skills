@@ -1,10 +1,25 @@
-   <% skills.forEach(function(skill) { %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+ 
+ 
+ <% skills.forEach(function(skill) { %>
       <li><%= skill.name %>: <%= skill.description %></li>
+      <a href="/skills/<%= skill.id %>">Modify</a>
     <% }); %>
   </ul>
 
+<br>
+<br>
   <a href="/skills/new">Add Skill</a>
-
+  <br>
+    <a href="/">Home</a>
+  
+</body>
+</html> 
 
 
 

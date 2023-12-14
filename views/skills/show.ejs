@@ -1,20 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Skill Details</title>
-    <!-- Include any CSS or JS files -->
+    <title><%= skill.name %> Details</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
     <h1><%= skill.name %></h1>
     <p><%= skill.description %></p>
 
-    <!-- Delete Skill Form -->
+    <!--Edit Skill-->
+    <button id="editButton">Edit Skill</button>
+
+    <form id="editForm" action="/skills/<%= skill.id %>?_method=PUT" method="POST" style="display: none;">
+        <label for="name">Skill Name:</label>
+        <input type="text" id="name" name="name" value="<%= skill.name %>" required>
+        
+        <label for="description">Skill Description:</label>
+        <input type="text" id="description" name="description" value="<%= skill.description %>" required>
+
+        <button type="submit">Update Skill</button>
+    </form>
+
+       <!-- JavaScript Form Visibility -->
+       <script>
+        document.getElementById('editButton').addEventListener('click', function() {
+            var form = document.getElementById('editForm');
+            if (form.style.display === 'none') {
+                form.style.display = 'block';
+            } else {
+                form.style.display = 'none';
+            }
+        });
+    </script>
+
+    <!-- Delete Form -->
     <form action="/skills/<%= skill.id %>?_method=DELETE" method="POST">
         <button type="submit">Delete Skill</button>
     </form>
 
-    <!-- Link back to Skills Index -->
     <a href="/skills">Back to Skills</a>
 </body>
 </html>
-
